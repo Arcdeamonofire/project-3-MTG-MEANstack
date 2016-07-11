@@ -24,10 +24,11 @@ Daily Tracker: https://trello.com/b/ssU9hOTS
 
 - [ ] deck builder (add cards to a user deck, user specified)
 
+- [ ] user can edit card deck (delete cards, change name of deck, delete deck)
 
 # Wireframe
 
-
+![wireframe - index](wireframe_index.png)
 
 # Technologies Used (API Reference?)
 node.js, express, html, css, mongodb, mongo, and mongoose, angular.js, http://magicthegathering.io/

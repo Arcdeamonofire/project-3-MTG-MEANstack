@@ -21,9 +21,17 @@ app.use(bodyParser.json());
 
 mongoose.connection.once('open', function(){
     console.log('greetings Planeswalker I await your command');
+<<<<<<< HEAD
 })
+=======
+});
+>>>>>>> de483134a4d662fbae7683e0ba7adfa3d1ec21c5
 
 app.listen(port, function(){
     console.log('hush a Planeswalker is among us');
     console.log(process.env.HELLO)
+<<<<<<< HEAD
 })
+=======
+});
+>>>>>>> de483134a4d662fbae7683e0ba7adfa3d1ec21c5
