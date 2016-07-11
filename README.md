@@ -20,11 +20,7 @@ Daily Tracker: https://trello.com/b/ssU9hOTS
 
 - [ ] User Login/logout
 
-- [ ] card search by title
-
-- [ ] deck builder (add cards to a user deck, user specified)
-
-- [ ] user can edit card deck (delete cards, change name of deck, delete deck)
+- [ ] card search
 
 # Wireframe
 
