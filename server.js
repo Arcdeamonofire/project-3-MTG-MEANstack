@@ -21,9 +21,9 @@ app.use(bodyParser.json());
 
 mongoose.connection.once('open', function(){
     console.log('greetings Planeswalker I await your command');
-})
+});
 
 app.listen(port, function(){
     console.log('hush a Planeswalker is among us');
     console.log(process.env.HELLO)
-})
+});
