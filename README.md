@@ -25,7 +25,7 @@ A deck building and card searching app for Magic: The Gathering using http://mag
 
 # Wireframe
 
-
+![wireframe - index](wireframe_index.png)
 
 # Technologies Used (API Reference?)
 node.js, express, html, css, mongodb, mongo, and mongoose, angular.js, http://magicthegathering.io/
