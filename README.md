@@ -21,6 +21,7 @@ A deck building and card searching app for Magic: The Gathering using http://mag
 
 - [ ] deck builder (add cards to a user deck, user specified)
 
+- [ ] user can edit card deck (delete cards, change name of deck, delete deck)
 
 # Wireframe
 
