@@ -10,7 +10,7 @@ A deck building and card searching app for Magic: The Gathering using http://mag
 # Trello
 Daily Tracker: https://trello.com/b/ssU9hOTS
 
-# Potential MVP
+# MVP
 - [ ] Site/App with page views: 
 	- index
 	- search
