@@ -7,17 +7,20 @@ HTML, CSS, Javascript, angular.js
 # Synopsis
 A deck building and card searching app for Magic: The Gathering using http://magicthegathering.io/
 
+# Trello
+Daily Tracker: https://trello.com/b/ssU9hOTS
+
 # Potential MVP
 - [ ] Site/App with page views: 
-	- index (nav, home, about, cards, search, signup, footer)
-	- search (simple and advanced); will implement hidden CSS
+	- index
+	- search
 	- card show page
 	- user home
 	- user deck
 
 - [ ] User Login/logout
 
-- [ ] card search (simple/advance) basically by title then by several parameters
+- [ ] card search by title
 
 - [ ] deck builder (add cards to a user deck, user specified)
 
