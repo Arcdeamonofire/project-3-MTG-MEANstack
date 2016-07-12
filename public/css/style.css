@@ -99,7 +99,7 @@ body {
 
 	/*header*/
 	#home-header {
-		background: url(../img/jumbo.png) no-repeat center center;
+		background: url("http://i.imgur.com/5D960AC.png") no-repeat center center;
 		-webkit-background-size: cover;
 		background-size: cover;
 		/*height: 450px;*/
@@ -144,7 +144,7 @@ body {
 
 	/*info*/
 	#home-info {
-		background: url('../img/jumbo3.png') no-repeat center center;
+		background: url("http://i.imgur.com/bNxPOwM.png") no-repeat center center;
 		-webkit-background-size: cover;
 		background-size: cover;
 		/*height: 450px;*/
@@ -221,7 +221,7 @@ body {
 
 	/*signup*/
 	#home-signup {
-		background: url('../img/jumbo2.png') no-repeat center center;
+		background: url("http://i.imgur.com/IRet6nt.png") no-repeat center center;
 		-webkit-background-size: cover;
 		background-size: cover;
 		/*height: 450px;*/
