@@ -11,7 +11,7 @@ var User = require('../models/users');
 router.post('/', function(req, res){
 	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
 	console.log(req.body)
-	req.session.name = req.body.name;
+	req.session.userName = req.body.userName;
 	User.create(req.body, function(err, user) {
 		res.send(user);
 	});
