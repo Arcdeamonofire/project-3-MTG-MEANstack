@@ -16,7 +16,9 @@ app.use(bodyParser.json());
 //public files :D
 app.use(express.static('public'));
 
-//include controller info here!
+//controller info here!
+var usersController = require('./controllers/usersController');
+app.use('/users', usersController);
 
 mongoose.connection.once('open', function(){
     console.log('greetings Planeswalker I await your command');
