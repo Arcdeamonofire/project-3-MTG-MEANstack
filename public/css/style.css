@@ -32,7 +32,7 @@ body {
 }
 
 .center-logo {
-	padding: 4.2rem 1em 0 0;
+	padding: 7.5rem 1em 0 0;
 	float: left;
 	clear: all;
 }
@@ -102,13 +102,13 @@ body {
 		background: url(../img/jumbo.png) no-repeat center center;
 		-webkit-background-size: cover;
 		background-size: cover;
-		height: 450px;
+		/*height: 450px;*/
 		margin-top: 50px;
 	}
 	
 	#home-header-headline {
 		font-size: 3.7em;
-		padding: 1.1em 0;
+		padding: 2em 0;
 		color: #EC9945;
 	}
 
@@ -147,7 +147,7 @@ body {
 		background: url('../img/jumbo3.png') no-repeat center center;
 		-webkit-background-size: cover;
 		background-size: cover;
-		height: 450px;
+		/*height: 450px;*/
 	}
 
 	#home-info-type {
@@ -180,7 +180,7 @@ body {
 	/*search*/
 	#home-search {
 		background-color: #222;
-		height: 450px;
+		/*height: 450px;*/
 	}
 
 	.home-search-img {
@@ -190,7 +190,7 @@ body {
 
 	#home-search-type{
 		display: inline-block;
-		margin: 2em 1em;
+		margin: 2em 1em 6em;
 		padding: 0;
 	}
 	
@@ -224,7 +224,7 @@ body {
 		background: url('../img/jumbo2.png') no-repeat center center;
 		-webkit-background-size: cover;
 		background-size: cover;
-		height: 450px;
+		/*height: 450px;*/
 	}
 
 	#home-signup-heading {
@@ -237,7 +237,7 @@ body {
 		font-size: 2em;
 		background-color: #EC9945;
 		padding: 1em 3em;
-		margin: 0 0 0 9em;
+		margin: 0 0 2em 9em;
 	}
 
 	#home-signup-button:hover {
