@@ -15,85 +15,18 @@
 			
 			<!-- NAV -->
 			<nav id="home-nav">
-				<a href="#"><img id="home-nav-logo" src="http://i.imgur.com/14OsI2t.png"></a>
+				<a href="/"><img id="home-nav-logo" src="http://i.imgur.com/14OsI2t.png"></a>
 				<ul class="home-ul">
-					<li class="home-li"><a class="link" href="#">sign up</a></li>
+					<li class="home-li"><a class="link" href="/signup">sign up</a></li>
 					<!-- will show up with login <li class="home-li"><a class="link" href="#">deck</a></li> -->
-					<li class="home-li"><a class="link" href="#">search</a></li>
+					<li class="home-li"><a class="link" href="/search">search</a></li>
 				</ul>
 			</nav>
 
 			<!-- ====== -->
 			<!-- NG-VIEWS GO BELOW HERE -->
 			<!-- ====== -->
-
-			<!-- HEADER -->
-			<section id="home-header">
-				<div class="container">
-					<img class="home-img center-logo" src="http://i.imgur.com/iHBCulY.png">
-					<h1 id="home-header-headline" class="center uppercase">Compile and store your winning deck</h1>
-				</div>
-			</section>
-
-			<!-- ABOUT -->
-			<section id="home-about">
-				<div class="container">
-					<img id="home-about-img" class="center" src="http://i.imgur.com/D3kywPZ.png"><br>
-					<div id="home-about-type" class="center">
-						<a class="home-about-a link" href="#">WHAT</a>
-						<a class="home-about-a link" href="#">WHO</a>
-						<a class="home-about-a link" href="#">HOW</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- INFO -->
-			<section id="home-info">
-				<div class="container">
-					<div id="home-info-type" class="right">
-						<h1 id="home-info-heading" class="uppercase">Over 10,000 cards</h1><br>
-						<h2 class="home-info-subheading uppercase">complete stat listings</h2><br>
-						<h2 class="home-info-subheading uppercase">advanced searching</h2><br>
-						<h2 class="home-info-subheading uppercase">live search results</h2>
-					</div>
-					<img id="home-info-img" src="http://i.imgur.com/8UE9wU0.png">
-				</div>
-			</section>
-
-			<!-- SEARCH -->
-			<section id="home-search">
-				<div class="container">
-					<img class="home-search-img center-logo" src="http://i.imgur.com/15Onrlg.png">
-					<div id="home-search-type">
-						<h1 class="home-search-text uppercase" id="home-search-heading">Search &amp Save</h1><br>
-						<ul id="home-search-ul">
-							<li>Search by <span class="green">color, type, mana</span>, &amp more</li>
-							<li>Get detailed card specifics and images</li>
-							<li>Save your favorite cards to your unique deck</li>
-						</ul><br>
-						<a class="link white" href="#"><div id="home-search-button">SEARCH</div></a>
-					</div>
-				</div>
-			</section>
-
-			<!-- SIGN UP -->
-			<section id="home-signup">
-				<div class="container">
-					<h1 class="center uppercase" id="home-signup-heading">Ready to build your deck?</h1><br>
-					<a class="link white uppercase" href="#"><div id="home-signup-button">Sign Up</div></a>
-				</div>
-			</section>
-
-			<!-- FOOTER -->
-			<footer id="home-footer">
-				<div class="container">
-					<ul class="home-ul center">
-						<li class="home-li-footer">Magic: the Gathering &copy; <a class="link green" href="http://magic.wizards.com/">Wizards of the Coast</a></li>
-						<li class="home-li-footer">Magic: the Gathering API&copy; <a class="link green" href="https://magicthegathering.io/">Magic: the Gathering Developers</a></li>
-						<li class="home-li-footer">Design and Development by J. Goatcher and S. Weisse, 2016</li>
-					</ul>
-				</div>
-			</footer>
+			<main ng-view></main>
 
 	</body>
 
