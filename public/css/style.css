@@ -1,0 +1,142 @@
+/*ELEMENTS*/
+
+body {
+	font-family: 'Raleway', sans-serif;
+	background-color: #222;
+	color: #ddd;
+	margin: 0;
+}
+
+/*SHARED*/
+
+.container {
+	max-width: 940px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.center {
+	text-align: center;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.relative {
+	position: relative;
+}
+
+/*INDEX.html*/
+
+.home-img {
+	height: 200px;
+	display: inline-block;
+}
+
+.home-large-text {
+	font-size: 3em;
+	display: inline-block;
+}
+
+	/*nav*/
+	#home-nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color: #222;
+		height: 50px;
+		width: 100%;
+	}
+
+	.home-ul {
+		list-style: none;
+		display: inline-block;
+		margin: 0 auto;
+	}
+
+	.home-li {
+		display: inline-block;
+		padding: 1em 1em;
+		text-align: right;
+	}
+
+	.home-a {
+		text-decoration: none;
+		color: #ddd;
+	}
+
+	/*header*/
+	#home-header {
+		background: url(../img/jumbo.png) no-repeat center center;
+		-webkit-background-size: cover;
+		background-size: cover;
+		height: 450px;
+		margin-top: 50px;
+	}
+
+	#center-logo {
+		padding: 4rem 1em 0 0;
+		float: left;
+		clear: all;
+	}
+
+	#home-header-headline {
+		font-size: 3.7em;
+		padding: 1em 0;
+		color: #fff;
+	}
+
+	/*about*/
+	#home-about {
+		background-color: #222;
+		height: 450px;
+	}
+
+	/*info*/
+	#home-info {
+		background: url('../img/jumbo3.png') no-repeat center center;
+		-webkit-background-size: cover;
+		background-size: cover;
+		height: 450px;
+	}
+
+	/*search*/
+		#home-search {
+		background-color: #222;
+		height: 450px;
+	}
+
+	/*signup*/
+	#home-signup {
+		background: url('../img/jumbo2.png') no-repeat center center;
+		-webkit-background-size: cover;
+		background-size: cover;
+		height: 450px;
+	}
+	/*footer*/
+	#home-footer {
+		background-color: #222;
+		height: 1em;
+	}
+
+	.home-li-footer {
+		display: inline-block;
+		padding: 2em 1em;
+		font-size: 10px;
+	}
+
+	.home-a-footer {
+		text-decoration: none;
+		color: green;
+	}
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 592px) {
+	#home-header-headline {
+		margin: 2em 0;
+		clear: left;
+		font-size: 2em;
+	}
+}
