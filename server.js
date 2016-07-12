@@ -18,7 +18,6 @@ app.use(bodyParser.json());
 
 //include controller info here!
 
-
 mongoose.connection.once('open', function(){
     console.log('greetings Planeswalker I await your command');
 })
