@@ -43,6 +43,11 @@ Daily Tracker: https://trello.com/b/ssU9hOTS
 # Wireframe
 
 ![wireframe - index](wireframe_index.png)
+![wireframe - signup](wireframe_signup.png)
+![wireframe - login](wireframe_login.png)
+![wireframe - search](wireframe_search.png)
+![wireframe - show](wireframe_show.png)
+![wireframe - deck](wireframe_deck.png)
 
 # Technologies Used (API Reference?)
 node.js, express, html, css, mongodb, mongo, and mongoose, angular.js, http://magicthegathering.io/
