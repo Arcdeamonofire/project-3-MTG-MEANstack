@@ -3,6 +3,7 @@ require('dotenv').config();
 var express = require('express'),
     app     = express(),
     mongoose = require('mongoose'),
+    bcrypt = require('bcrypt'),
     bodyParser = require('body-parser');
 
 var port = process.env.PORT || 3000;
