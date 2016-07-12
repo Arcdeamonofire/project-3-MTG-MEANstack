@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //will need to be uncommented once we have a public folder we are referencing
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 //include controller info here!
 
