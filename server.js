@@ -20,6 +20,10 @@ app.use(express.static('public'));
 var usersController = require('./controllers/usersController');
 app.use('/users', usersController);
 
+app.get('*', function(req, res){
+  res.redirect('/');
+});
+
 mongoose.connection.once('open', function(){
     console.log('greetings Planeswalker I await your command');
 })
