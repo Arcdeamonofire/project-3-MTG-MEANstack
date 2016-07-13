@@ -6,6 +6,16 @@ var express = require('express'),
 var User = require('../models/users');
 
 //login route
+router.post('/login', function(req, res){
+	User.findOne({name:req.body.name}, function(err, foundUser){
+		if(bcrypt.compareSync(req.body.password, foundUser.password)){
+			req.session.name = foundUser.name;
+			res.redirect('/'+foundUser.name);
+		} else {
+			res.send(foundUser);
+		}
+	});
+});
 
 //sign up route -> a push User.create
 router.post('/', function(req, res){
