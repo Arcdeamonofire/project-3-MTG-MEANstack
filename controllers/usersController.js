@@ -13,7 +13,7 @@ router.post('/login', function(req, res){
 			console.log('successful sign in')
 			res.send(foundUser);
 		} else {
-			alert('You need to sign up!');
+			console.log('failed: bad password')
 			res.redirect('/');
 		}
 	});

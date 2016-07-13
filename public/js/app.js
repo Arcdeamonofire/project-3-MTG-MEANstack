@@ -10,7 +10,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		controller: 'SignUp',
 		controllerAs: 'submit'
 	}).when('/search', {
-		templateUrl: 'partials/search.html'
+		templateUrl: 'partials/search.html',
+		controller: 'Search',
+		controllerAs: 'search'
 	}).when('/login', {
 		templateUrl: 'partials/login.html',
 		controller: 'LogIn',
@@ -54,6 +56,23 @@ app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
 			window.location.pathname = "/";
 		})
 	}
+}]);
+
+app.controller('Search', ['$http', '$scope', function($http, $scope) {
+	console.log('this is the search page');
+	var search = this;
+	this.find = function(color) {
+		console.log('patience Walker looking into your request');
+
+		$http({
+			method: 'GET',
+			url: 'https://api.magicthegathering.io/v1/cards?colors='+color+'&pageSize=500',
+		}).then(function(result){
+			console.log(result.data.cards);
+			search.cards = result.data.cards;
+		})
+	}
+
 }]);
 
 app.controller('HomeController', function() {
