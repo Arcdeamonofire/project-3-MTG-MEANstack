@@ -1,11 +1,11 @@
 <section id="signup-section">
 	<div class="container">
 		<h1 id="signup-heading">SIGN UP</h1>
-		<form id="signup-form">
-			<input class="signup-input" type="text" placeholder="First Name">
-			<input class="signup-input" type="text" placeholder="Last Name">
-			<input class="signup-input" type="text" placeholder="Username">
-			<input class="signup-input" type="password" placeholder="Password">
+		<form id="signup-form" ng-submit="submit.signUp()">
+			<input class="signup-input" type="text" placeholder="First Name" ng-model="submit.form.firstName">
+			<input class="signup-input" type="text" placeholder="Last Name" ng-model="submit.form.lastName">
+			<input class="signup-input" type="text" placeholder="Username" ng-model="submit.form.userName">
+			<input class="signup-input" type="password" placeholder="Password" ng-model="submit.form.password">
 			<input id="signup-button-signup" type="submit" value="REGISTER">
 		</form><br>
 		<h2 class="signup-subheading"><span>Already registered?</span></h2>
