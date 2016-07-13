@@ -7,14 +7,15 @@
 			</section>
 
 			<!-- ABOUT -->
-			<section id="home-about">
-				<div class="container">
+			<section id="home-about" ng-controller="HomeController as home">
+				<div class="container center">
 					<img id="home-about-img" class="center" src="http://i.imgur.com/D3kywPZ.png"><br>
 					<div id="home-about-type" class="center">
-						<a class="home-about-a link" href="#">WHAT</a>
-						<a class="home-about-a link" href="#">WHO</a>
-						<a class="home-about-a link" href="#">HOW</a>
+						<a ng-mouseover="home.switchAboutWhat()" class="home-about-a link" href="#">WHAT</a>
+						<a ng-mouseover="home.switchAboutWho()"class="home-about-a link" href="#">WHO</a>
+						<a ng-mouseover="home.switchAboutHow()"class="home-about-a link" href="#">HOW</a>
 					</div>
+					<div class="home-about-include" ng-include="home.include_about"></div>
 				</div>
 			</section>
 
@@ -51,7 +52,7 @@
 			<section id="home-signup">
 				<div class="container center">
 					<h1 class="center uppercase" id="home-signup-heading">Ready to build your deck?</h1><br>
-					<a class="link white uppercase" href="#"><div id="home-signup-button">Sign Up</div></a>
+					<a class="link white uppercase" href="/signup"><div id="home-signup-button">Sign Up</div></a>
 				</div>
 			</section>
 

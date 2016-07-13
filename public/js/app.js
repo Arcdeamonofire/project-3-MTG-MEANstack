@@ -8,11 +8,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	}).when('/signup', {
 		templateUrl: 'partials/signup.html',
 		controller: 'SignUp',
-		controllerAs: 'submit'
+			controllerAs: 'submit'
 	}).when('/search', {
 		templateUrl: 'partials/search.html'
 	}).when('/login', {
 		templateUrl: 'partials/login.html'
+	}).when('/show', {
+		templateUrl: 'partials/show.html'
 	});
 }]);
 
@@ -33,3 +35,26 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 		})
 	}
 }]);
+
+app.controller('HomeController', function() {
+
+	this.include_what = 'partials/what.html';
+	this.include_who  = 'partials/who.html';
+	this.include_how  = 'partials/how.html';
+
+	this.switchAboutWhat = function() {
+		this.include_about = '';
+		this.include_about = 'partials/what.html';
+	};
+
+	this.switchAboutWho = function() {
+		this.include_about = '';
+		this.include_about = 'partials/who.html'
+	};
+
+	this.switchAboutHow = function() {
+		this.include_about = '';
+		this.include_about = 'partials/how.html'
+	};
+
+});

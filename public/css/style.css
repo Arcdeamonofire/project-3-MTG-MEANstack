@@ -62,6 +62,10 @@ body {
 	color: #fff;
 }
 
+.orange {
+	color: #EC9945;
+}
+
 .link {
 	text-decoration: none;
 	color: #fff;
@@ -130,7 +134,6 @@ body {
 	/*about*/
 	#home-about {
 		background-color: #222;
-		height: 500px;
 	}
 
 	#home-about-img {
@@ -155,6 +158,12 @@ body {
 	.home-about-a:hover {
 		text-decoration: underline;
 		color: #EC9945;
+	}
+
+	.home-about-include {
+		display: inline-block;
+		margin: 1em auto;
+		text-align: center;
 	}
 
 	/*info*/
@@ -546,9 +555,21 @@ body {
 	margin: 70px auto 10px;
 }
 
+#show-ul {
+	list-style: none;
+	padding: none;
+	margin: none;
+	display: inline-block;
+}
+
+.show-li {
+	padding: 12px 0;
+}
+
 #show-return {
 	text-align: center;
 	font-size: 1em;
 	margin-bottom: 2em;
+	color: #EC9945;
 }
 
