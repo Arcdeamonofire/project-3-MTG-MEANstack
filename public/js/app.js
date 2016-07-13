@@ -8,11 +8,13 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 	}).when('/signup', {
 		templateUrl: 'partials/signup.html',
 		controller: 'SignUp',
-			controllerAs: 'submit'
+		controllerAs: 'submit'
 	}).when('/search', {
 		templateUrl: 'partials/search.html'
 	}).when('/login', {
-		templateUrl: 'partials/login.html'
+		templateUrl: 'partials/login.html',
+		controller: 'LogIn',
+		controllerAs: 'login'
 	}).when('/show', {
 		templateUrl: 'partials/show.html'
 	});
@@ -28,6 +30,24 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 		$http({
 			method: 'POST',
 			url: '/users',
+			data: this.form
+		}).then(function(result){
+			console.log(result.data);
+			window.location.pathname = "/";
+		})
+	}
+}]);
+
+app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
+	console.log('this is the log in page');
+
+	this.logIn = function() {
+		console.log('a Planeswalker is logging in!');
+		console.log('Planeswalker\'s data: ', this.form);
+
+		$http({
+			method: 'POST',
+			url: '/users/login',
 			data: this.form
 		}).then(function(result){
 			console.log(result.data);

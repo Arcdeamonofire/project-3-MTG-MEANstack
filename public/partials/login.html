@@ -1,9 +1,9 @@
 <section id="login-section">
 	<div class="container">
 		<h1 id="login-heading">Log In</h1>
-		<form>
-			<input class="login-input" type="text" placeholder="Username">
-			<input class="login-input" type="password" placeholder="Password">
+		<form ng-submit="login.logIn()">
+			<input class="login-input" type="text" placeholder="Username" ng-model="login.form.userName">
+			<input class="login-input" type="password" placeholder="Password" ng-model="login.form.password">
 			<input id="login-button-signup" type="submit" value="LOG IN">
 		</form>
 	</div>

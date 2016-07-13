@@ -7,12 +7,14 @@ var User = require('../models/users');
 
 //login route
 router.post('/login', function(req, res){
-	User.findOne({name:req.body.name}, function(err, foundUser){
+	User.findOne({userName:req.body.userName}, function(err, foundUser){
 		if(bcrypt.compareSync(req.body.password, foundUser.password)){
 			req.session.name = foundUser.name;
-			res.redirect('/'+foundUser.name);
-		} else {
+			console.log('successful sign in')
 			res.send(foundUser);
+		} else {
+			alert('You need to sign up!');
+			res.redirect('/');
 		}
 	});
 });
