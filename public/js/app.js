@@ -13,6 +13,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'partials/search.html',
 		controller: 'Search',
 		controllerAs: 'search'
+	}).when('/search/:searchColor', {
+		templateUrl: 'partials/search.html',
+		controller: 'Search',
+		controllerAs: 'search'
 	}).when('/login', {
 		templateUrl: 'partials/login.html',
 		controller: 'LogIn',
@@ -34,6 +38,9 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 		index.cards = data.cards;
 		$scope.cards = index.cards;
 	});
+	$scope.$back = function() { 
+    	window.history.back();
+  	};
 }]);
 
 app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
@@ -72,10 +79,10 @@ app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
 	}
 }]);
 
-app.controller('Search', ['$http', '$scope', function($http, $scope) {
+app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
 	console.log('this is the search page');
 	var search = this;
-	search.count = 0;
+
 	this.find = function(color) {
 		console.log('patience Walker looking into your request');
 
@@ -91,6 +98,10 @@ app.controller('Search', ['$http', '$scope', function($http, $scope) {
 		})
 	}
 
+	if ($routeParams.searchColor !== undefined){
+		search.find($routeParams.searchColor)
+	};
+
 }]);
 	
 app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($http, $scope, $routeParams, $filter) {
@@ -99,13 +110,6 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($
 	var show = this;
 	show.card = $filter('filter')($scope.$parent.cards, function (d) {return d.id === $routeParams.cardid;})[0];
 	console.log(show.card);
-	// $scope.$on('cards', function(event, data){
- //    	// console.log(event);
- //    	show.data = data;
- //    	console.log(data);
-
-	// });
-	// console.log(show.data);
 }]);
 
 
