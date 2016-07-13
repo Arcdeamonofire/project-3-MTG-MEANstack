@@ -17,8 +17,20 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'partials/login.html',
 		controller: 'LogIn',
 		controllerAs: 'login'
-	}).when('/show', {
-		templateUrl: 'partials/show.html'
+	}).when('/show/:cardid', {
+		templateUrl: 'partials/show.html',
+		controller: 'Show',
+		controllerAs: 'show'
+	});
+}]);
+
+app.controller('Index', ['$http', '$scope', function($http, $scope) {
+	console.log('this is the index page');
+	var index = this;
+	$scope.$on('showCard', function(event, data){
+		// console.log(data);
+		index.cards = data.cards;
+		$scope.cards = index.cards;
 	});
 }]);
 
@@ -61,6 +73,7 @@ app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
 app.controller('Search', ['$http', '$scope', function($http, $scope) {
 	console.log('this is the search page');
 	var search = this;
+	search.count = 0;
 	this.find = function(color) {
 		console.log('patience Walker looking into your request');
 
@@ -68,12 +81,31 @@ app.controller('Search', ['$http', '$scope', function($http, $scope) {
 			method: 'GET',
 			url: 'https://api.magicthegathering.io/v1/cards?colors='+color+'&pageSize=500',
 		}).then(function(result){
-			console.log(result.data.cards);
+			// console.log(result.data.cards);
 			search.cards = result.data.cards;
+			$scope.$emit('showCard', {
+            	cards:search.cards
+        	});
 		})
 	}
 
 }]);
+	
+app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($http, $scope, $routeParams, $filter) {
+	console.log('this is the show page');
+	// console.log('this id is: ' + $routeParams.cardid);
+	var show = this;
+	show.card = $filter('filter')($scope.$parent.cards, function (d) {return d.id === $routeParams.cardid;})[0];
+	console.log(show.card);
+	// $scope.$on('cards', function(event, data){
+ //    	// console.log(event);
+ //    	show.data = data;
+ //    	console.log(data);
+
+	// });
+	// console.log(show.data);
+}]);
+
 
 app.controller('HomeController', function() {
 
