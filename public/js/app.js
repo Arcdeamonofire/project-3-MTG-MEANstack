@@ -26,9 +26,10 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 		$http({
 			method: 'POST',
 			url: '/users',
-			data: this.form})
-		// }). then(function(result){
-		// 	console.log(result.data);
-		// })
+			data: this.form
+		}).then(function(result){
+			console.log(result.data);
+			window.location.pathname = "/";
+		})
 	}
 }]);
