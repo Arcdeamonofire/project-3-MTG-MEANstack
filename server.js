@@ -3,7 +3,15 @@ require('dotenv').config();
 var express = require('express'),
     app     = express(),
     mongoose = require('mongoose'),
+    bcrypt = require('bcrypt'),
+    session = require('express-session'),
     bodyParser = require('body-parser');
+
+app.use(session({
+    secret: "Planeswalker",
+    resave: false,
+    saveUninitialized: false
+}));
 
 var port = process.env.PORT || 3000;
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mthmeanapp';
