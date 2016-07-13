@@ -74,7 +74,10 @@ body {
 .thumbnails {
 	height: 150px;
 	display: inline-block;
-	padding: 20px;
+	padding: 5px;
+	border-radius: 10px;
+	background-color: #fff;
+	margin: 20px 20px;
 }
 
 /*INDEX.html*/
@@ -467,6 +470,9 @@ body {
 	font-size: 2em;
 }
 
+#search-results {
+	margin-top: 30px;
+}
 
 /*input[type="checkbox"].search-checkbox {
 	width: 2em;
@@ -572,4 +578,31 @@ body {
 	margin-bottom: 2em;
 	color: #EC9945;
 }
+
+/*USER.html*/
+
+#users-section {
+	padding: 1em;
+	margin: 70px auto 10px;
+}
+
+#users-heading {
+	font-size: 4em;
+	margin-bottom: 0;
+	float: left;
+	clear: all;
+}
+
+#users-subheading {
+	font-size: 2em;
+	float: left;
+	clear: all;
+}
+
+#user-img {
+	float: right;
+	clear: all;
+	height: 200px;
+}
+
 
