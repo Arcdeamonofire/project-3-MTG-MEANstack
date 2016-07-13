@@ -561,6 +561,12 @@ body {
 	margin: 70px auto 10px;
 }
 
+#show-image {
+	padding: 5px;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
 #show-ul {
 	list-style: none;
 	padding: none;
@@ -570,6 +576,17 @@ body {
 
 .show-li {
 	padding: 12px 0;
+}
+
+#show-addbutton {
+	display: inline-block;
+	background-color: #EC9945;
+	padding: 1em 3em;
+	margin: 1em 0;
+}
+
+#show-addbutton:hover {
+	background-color: #B6681A;
 }
 
 #show-return {

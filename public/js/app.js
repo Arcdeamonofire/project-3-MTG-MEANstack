@@ -21,6 +21,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'partials/show.html',
 		controller: 'Show',
 		controllerAs: 'show'
+	}).when('/users', {
+		templateUrl: 'partials/users.html'
 	});
 }]);
 
