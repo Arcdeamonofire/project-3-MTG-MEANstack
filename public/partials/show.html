@@ -2,7 +2,7 @@
 	<div class="container center">
 		
 		<!-- Card data will popular here -->
-		<img src="{{show.card.imageUrl}}">
+		<img id="show-image" src="{{show.card.imageUrl}}">
 		<ul id="show-ul" class="left">
 			<li class="show-li"><span class="green">NAME</span>: {{show.card.name}}</li>
 			<li class="show-li"><span class="green">COLORS</span>: <span ng-repeat="color in show.card.colors">{{color}}<span ng-if="show.card.colors > 1">, </span></span></li>
@@ -13,7 +13,8 @@
 			<li class="show-li"><span class="green">SET</span>: {{show.card.set}}</li>
 			<li class="show-li"><span class="green">ARTIST</span>: {{show.card.artist}}</li>
 		</ul>
-
+		<br>
+		<div id="show-addbutton">ADD TO DECK</div>
 		<a class="link" href="/search"><p id="show-return">Return to Search Results</p></a>
 	</div>
 </section>
