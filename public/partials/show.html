@@ -2,19 +2,19 @@
 	<div class="container center">
 		
 		<!-- Card data will popular here -->
-		<img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=219&type=card">
+		<img id="show-image" src="{{show.card.imageUrl}}">
 		<ul id="show-ul" class="left">
-			<li class="show-li"><span class="green">NAME</span>: Rock Hydra</li>
-			<li class="show-li"><span class="green">COLORS</span>: Red</li>
-			<li class="show-li"><span class="green">MANA COST</span>: 2</li>
-			<li class="show-li"><span class="green">TYPE</span>: Creature - Hydra</li>
-			<li class="show-li"><span class="green">SUBTYPE</span>: Hydra</li>
-			<li class="show-li"><span class="green">RARITY</span>: Rare</li> <!-- use an if statement to decide color -->
-			<li class="show-li"><span class="green">SET</span>: LEA</li>
-			<li class="show-li"><span class="green">ARTIST</span>: Jeff. A Menges</li>
+			<li class="show-li"><span class="green">NAME</span>: {{show.card.name}}</li>
+			<li class="show-li"><span class="green">COLORS</span>: <span ng-repeat="color in show.card.colors">{{color}}<span ng-if="show.card.colors > 1">, </span></span></li>
+			<li class="show-li"><span class="green">MANA COST</span>: {{show.card.manaCost.length}}</li>
+			<li class="show-li"><span class="green">TYPE</span>: <span ng-repeat="type in show.card.types">{{type}}<span ng-if="show.card.subtypes > 1">, </span></span></li>
+			<li class="show-li"><span class="green">SUBTYPE</span>: <span ng-repeat="subtype in show.card.subtypes">{{subtype}}<span ng-if="show.card.subtypes > 1">, </span></span></li>
+			<li class="show-li"><span class="green">RARITY</span>: {{show.card.rarity}}</li> <!-- use an if statement to decide color -->
+			<li class="show-li"><span class="green">SET</span>: {{show.card.set}}</li>
+			<li class="show-li"><span class="green">ARTIST</span>: {{show.card.artist}}</li>
 		</ul>
-
+		<br>
+		<div id="show-addbutton">ADD TO DECK</div>
 		<a class="link" href="/search"><p id="show-return">Return to Search Results</p></a>
-
 	</div>
 </section>
