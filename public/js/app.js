@@ -41,13 +41,18 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 
 	$scope.$on('getUser', function(event, data){
 		index.user = data.userLogged;
+		if(index.user.gender == 'male') {
+			index.userImage = '../img/user-m.jpg';
+		} else {
+			index.userImage = '../img/user-f.jpg';
+		}
 		$scope.user = index.user;
-		console.log($scope.user);
 	});
 
 	$scope.$back = function() { 
     	window.history.back();
   	};
+
 }]);
 
 app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
