@@ -55,8 +55,13 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 			url: '/users',
 			data: this.form
 		}).then(function(result){
-			console.log(result.data);
-			window.location.pathname = "/";
+			console.log(result)
+			if(result.data !== ""){
+				console.log(result.data);
+				window.location.pathname = "/";
+			} else {
+				console.log('Username already exists pls try again')
+			}
 		})
 	}
 }]);

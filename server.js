@@ -14,7 +14,7 @@ app.use(session({
 }));
 
 var port = process.env.PORT || 3000;
-var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mthmeanapp';
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mtgmeanapp';
 
 mongoose.connect(mongoDBURI);
 
