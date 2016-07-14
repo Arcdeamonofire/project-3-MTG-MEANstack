@@ -43,7 +43,7 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
   	};
 }]);
 
-app.controller('SignUp', ['$http', '$scope', '$locationProvider', function($http, $scope, $locationProvider) {
+app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
 	console.log('this is the sign up page');
 
 	this.signUp = function() {
@@ -55,9 +55,9 @@ app.controller('SignUp', ['$http', '$scope', '$locationProvider', function($http
 			url: '/users',
 			data: this.form
 		}).then(function(result){
-			console.log(result)
+			// console.log(result)
 			if(result.data !== ""){
-				console.log(result.data);
+				// console.log(result.data);
 				$location.url('/');
 				$location.replace();
 				$window.history.pushState(null, 'any', $location.absUrl());
@@ -68,7 +68,7 @@ app.controller('SignUp', ['$http', '$scope', '$locationProvider', function($http
 	}
 }]);
 
-app.controller('LogIn', ['$http', '$scope', '$locationProvider', function($http, $scope, $locationProvider) {
+app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
 	console.log('this is the log in page');
 
 	this.logIn = function() {
@@ -80,7 +80,7 @@ app.controller('LogIn', ['$http', '$scope', '$locationProvider', function($http,
 			url: '/users/login',
 			data: this.form
 		}).then(function(result){
-			console.log(result.data);
+			// console.log(result.data);
 			console.log('redirecting to home')
 			$location.url('/');
 			$location.replace();
