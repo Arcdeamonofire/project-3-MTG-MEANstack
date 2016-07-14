@@ -60,13 +60,9 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 
 	});
 
-	$scope.$back = function() { 
-    	window.history.back();
-  	};
-
 }]);
 
-app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
+app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
 	console.log('this is the sign up page');
 
 	this.signUp = function() {
@@ -78,14 +74,16 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 			url: '/users',
 			data: this.form
 		}).then(function(result){
-			console.log(result)
+			// console.log(result)
 			if(result.data !== ""){
 				console.log(result.data);
 				userLogged = result.data;
 				$scope.$emit('getUser', {
 					userLogged: userLogged
 			});
-				window.location.pathname = "/";
+				$location.url('/');
+				$location.replace();
+				$window.history.pushState(null, 'any', $location.absUrl());
 			} else {
 				console.log('Username already exists pls try again')
 			}
@@ -93,7 +91,7 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 	}
 }]);
 
-app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
+app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
 	console.log('this is the log in page');
 
 	this.logIn = function() {
@@ -105,12 +103,15 @@ app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
 			url: '/users/login',
 			data: this.form
 		}).then(function(result){
-			console.log(result.data);
+			// console.log(result.data);
 			userLogged = result.data;
 			$scope.$emit('getUser', {
 				userLogged: userLogged
 			});
-			//window.location.pathname = "/"; 
+			console.log('redirecting to home')
+			$location.url('/');
+			$location.replace();
+			$window.history.pushState(null, 'any', $location.absUrl());
 		})
 	}
 }]);
