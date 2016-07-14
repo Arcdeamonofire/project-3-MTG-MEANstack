@@ -109,7 +109,17 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($
 	// console.log('this id is: ' + $routeParams.cardid);
 	var show = this;
 	show.card = $filter('filter')($scope.$parent.cards, function (d) {return d.id === $routeParams.cardid;})[0];
-	console.log(show.card);
+	// console.log(this.card);
+	this.addCard = function(){
+		$http({
+			method:'POST',
+			url: '/users/deck',
+			data: show.card
+		}).then(function(result){
+			console.log('added card');
+			console.log(result.data);
+		})
+	}
 }]);
 
 
