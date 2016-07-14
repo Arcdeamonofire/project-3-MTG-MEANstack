@@ -5,7 +5,8 @@ var userSchema = mongoose.Schema({
 	lastName: String,
 	userName: { type: String, unique: true },
 	gender: String,
-	password: String || Number
+	password: String || Number,
+	deck: []
 });
 
 module.exports= mongoose.model('User', userSchema);
