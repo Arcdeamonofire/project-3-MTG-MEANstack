@@ -287,84 +287,6 @@ body {
 		color: green;
 	}
 
-/*MEDIA QUERIES*/
-
-@media (max-width: 592px) {
-
-	#center-logo {
-		padding: 2.5rem 5rem 0;
-		display: inline-block;
-	}
-
-	#home-header-headline {
-		margin: 2em 0;
-		clear: left;
-		font-size: 2em;
-	}
-
-}
-
-@media (max-width: 894px) {
-
-	#home-info-type {
-		display: block;
-		margin: 2em auto;
-		text-align: center;
-	}
-
-	#home-info-heading {
-		font-size: 30px;
-		text-align: center;
-	}
-
-	.home-info-subheading {
-		font-size: 24px;
-		text-align: center;
-	}
-
-	#home-info-img {
-		display: block;
-		margin: 0 auto;
-	}
-
-	#home-signup-heading {
-		margin-top: 1em;
-		font-size: 50px;
-	}
-
-	#home-signup-button {
-		display: inline-block;
-		font-size: 1em;
-		background-color: #EC9945;
-		margin: 0 0 0 8em;
-	}
-	
-}
-
-@media (max-width: 940px) {
-
-	.home-search-img {
-		height: 120px;
-	}
-
-	.home-search-text {
-		font-size: 24px;
-	}
-
-	#home-search-ul {
-		display: inline-block;
-		margin: 10px 0 0 20px;
-		font-size: 12px;
-	}
-
-	#home-search-button {
-		display: inline-block;
-		background-color: #EC9945;
-		padding: 1em;
-		margin: 10px 0 0 50px;
-	}
-}
-
 /*SIGNUP.html*/
 
 #signup-section {
@@ -603,23 +525,133 @@ body {
 	margin: 70px auto 10px;
 }
 
+#users-heading-div {
+	display: inline-block;
+	vertical-align: top;
+	margin: 60px 0 60px 30px;
+}
+
 #users-heading {
-	font-size: 4em;
-	margin-bottom: 0;
-	float: left;
-	clear: all;
+	font-size: 3em;
+	margin: 0;
 }
 
-#users-subheading {
-	font-size: 2em;
-	float: left;
-	clear: all;
+.users-edit-text {
+	color: #fff;
+	font-size: 20px;
+	background: rgba(0,0,0,.5);
+	padding: 0 .5em;
+	text-align: center;
 }
 
-#user-img {
-	float: right;
-	clear: all;
-	height: 200px;
+#users-edit-div .users-edit-text {
+	position: relative;
+	bottom: 102.5px;
+	left: 0px;
+	visibility: hidden;
+	padding: 5px 0;
 }
 
+#users-edit-div:hover .users-edit-text {
+	visibility: visible;
+}
 
+#users-img {
+	height: 150px;
+	padding: 10px;
+	border-radius: 110px;
+	background-color: #EC9945
+}
+
+#users-deck-subheading {
+	margin: 1em 0 2em;
+	font-weight: 300;
+}
+
+/*MEDIA QUERIES*/
+
+@media (max-width: 592px) {
+
+	#center-logo {
+		padding: 2.5rem 5rem 0;
+		display: inline-block;
+	}
+
+	#home-header-headline {
+		margin: 2em 0;
+		clear: left;
+		font-size: 2em;
+	}
+
+}
+
+@media (max-width: 645px) {
+	#user-img {
+		margin: 3em 6em;
+	}
+
+	#users-heading-div {
+		margin: 30px 0;
+	}
+}
+
+@media (max-width: 894px) {
+
+	#home-info-type {
+		display: block;
+		margin: 2em auto;
+		text-align: center;
+	}
+
+	#home-info-heading {
+		font-size: 30px;
+		text-align: center;
+	}
+
+	.home-info-subheading {
+		font-size: 24px;
+		text-align: center;
+	}
+
+	#home-info-img {
+		display: block;
+		margin: 0 auto;
+	}
+
+	#home-signup-heading {
+		margin-top: 1em;
+		font-size: 50px;
+	}
+
+	#home-signup-button {
+		display: inline-block;
+		font-size: 1em;
+		background-color: #EC9945;
+		margin: 0 0 0 8em;
+	}
+	
+}
+
+@media (max-width: 940px) {
+
+	.home-search-img {
+		height: 120px;
+	}
+
+	.home-search-text {
+		font-size: 24px;
+	}
+
+	#home-search-ul {
+		display: inline-block;
+		margin: 10px 0 0 20px;
+		font-size: 12px;
+	}
+
+	#home-search-button {
+		display: inline-block;
+		background-color: #EC9945;
+		padding: 1em;
+		margin: 10px 0 0 50px;
+	}
+}
