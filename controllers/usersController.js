@@ -23,11 +23,20 @@ router.post('/login', function(req, res){
 //sign up route -> a push User.create
 router.post('/', function(req, res){
 	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-	console.log(req.body)
-	req.session.userName = req.body.userName;
+	// console.log(req.body);
 	// console.log(req.session);
+	console.log('trying to create user')
 	User.create(req.body, function(err, user) {
-		res.send(user);
+		console.log('this is the user being added: '+user);
+		if(user !== undefined){
+			console.log('successful addition')
+			req.session.userName = user.userName;
+			res.send(user);
+		} else{
+			console.log("I\'m broken!")
+			res.send(user);
+		}
+		// console.log(req.session.userName);
 	});
 });
 
