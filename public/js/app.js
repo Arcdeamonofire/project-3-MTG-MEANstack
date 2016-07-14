@@ -25,7 +25,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'partials/show.html',
 		controller: 'Show',
 		controllerAs: 'show'
-	}).when('/users', {
+	}).when('/users/:id', {
 		templateUrl: 'partials/users.html'
 	});
 }]);
@@ -38,6 +38,13 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 		index.cards = data.cards;
 		$scope.cards = index.cards;
 	});
+
+	$scope.$on('getUser', function(event, data){
+		index.user = data.userLogged;
+		$scope.user = index.user;
+		console.log($scope.user);
+	});
+
 	$scope.$back = function() { 
     	window.history.back();
   	};
@@ -58,6 +65,10 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 			console.log(result)
 			if(result.data !== ""){
 				console.log(result.data);
+				userLogged = result.data;
+				$scope.$emit('getUser', {
+					userLogged: userLogged
+			});
 				window.location.pathname = "/";
 			} else {
 				console.log('Username already exists pls try again')
@@ -79,7 +90,11 @@ app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
 			data: this.form
 		}).then(function(result){
 			console.log(result.data);
-			window.location.pathname = "/";
+			userLogged = result.data;
+			$scope.$emit('getUser', {
+				userLogged: userLogged
+			});
+			//window.location.pathname = "/"; 
 		})
 	}
 }]);
@@ -108,6 +123,24 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 	};
 
 }]);
+
+// app.controller('UserController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
+// 	console.log('this is the user page');
+// 	var userThis = this;
+// 	u = $scope.user._id
+
+// 	this.find = function(u) {
+// 		console.log('user page loading');
+
+// 		$http({
+// 			method: 'GET',
+// 			url: 'users/'+u
+// 		}).then(function(result){
+// 			console.log(result)
+// 		})
+// 	}
+
+// }]);
 	
 app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($http, $scope, $routeParams, $filter) {
 	console.log('this is the show page');
@@ -126,7 +159,6 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($
 		})
 	}
 }]);
-
 
 app.controller('HomeController', function() {
 
