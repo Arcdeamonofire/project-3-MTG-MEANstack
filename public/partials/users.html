@@ -15,17 +15,14 @@
 		<h2 id="users-deck-subheading"><u>My Deck</u></h2>
 
 		<!-- cards will populate here.  dummy data to visualize -->
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
-		<img class="thumbnails" src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=8&type=card">
+		<div>
+			<a 
+				href="/show/{{card.id}}" 
+				ng-repeat="card in index.user.deck"
+			>
+					<img class="thumbnails" src="{{card.imageUrl}}" ng-if="card.imageUrl">
+			</a>
+		</div>
+
 	</div>
 </section>
