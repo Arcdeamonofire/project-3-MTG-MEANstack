@@ -43,7 +43,7 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
   	};
 }]);
 
-app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
+app.controller('SignUp', ['$http', '$scope', '$locationProvider', function($http, $scope, $locationProvider) {
 	console.log('this is the sign up page');
 
 	this.signUp = function() {
@@ -58,7 +58,9 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 			console.log(result)
 			if(result.data !== ""){
 				console.log(result.data);
-				window.location.pathname = "/";
+				$location.url('/');
+				$location.replace();
+				$window.history.pushState(null, 'any', $location.absUrl());
 			} else {
 				console.log('Username already exists pls try again')
 			}
@@ -66,7 +68,7 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 	}
 }]);
 
-app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
+app.controller('LogIn', ['$http', '$scope', '$locationProvider', function($http, $scope, $locationProvider) {
 	console.log('this is the log in page');
 
 	this.logIn = function() {
@@ -79,7 +81,10 @@ app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
 			data: this.form
 		}).then(function(result){
 			console.log(result.data);
-			window.location.pathname = "/";
+			console.log('redirecting to home')
+			$location.url('/');
+			$location.replace();
+			$window.history.pushState(null, 'any', $location.absUrl());
 		})
 	}
 }]);
