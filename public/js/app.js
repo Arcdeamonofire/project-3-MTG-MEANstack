@@ -25,7 +25,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'partials/show.html',
 		controller: 'Show',
 		controllerAs: 'show'
-	}).when('/users', {
+	}).when('/users/:id', {
 		templateUrl: 'partials/users.html'
 	});
 }]);
@@ -33,14 +33,37 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 app.controller('Index', ['$http', '$scope', function($http, $scope) {
 	console.log('this is the index page');
 	var index = this;
+
 	$scope.$on('showCard', function(event, data){
 		// console.log(data);
 		index.cards = data.cards;
 		$scope.cards = index.cards;
 	});
+
+	$scope.$on('getUser', function(event, data){ //gets User info to push to front-end
+		index.user = data.userLogged;
+		$scope.user = index.user;
+
+		// if (userLogged !== undefined) { //decides nav bar links
+		// 	index.navVar = index.user.userName;
+		// 	index.navLink = '/users/{{index.user._id}}';
+		// } else {
+		// 	index.navVar = 'Sign Up';
+		// 	index.navLink = '/signup';
+		// }
+
+		if(index.user.gender == 'male') { //changes User's avatar based on gender declaration
+			index.userImage = '../img/user-m.jpg';
+		} else {
+			index.userImage = '../img/user-f.jpg';
+		};
+
+	});
+
 	$scope.$back = function() { 
     	window.history.back();
   	};
+
 }]);
 
 app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
@@ -58,6 +81,10 @@ app.controller('SignUp', ['$http', '$scope', function($http, $scope) {
 			console.log(result)
 			if(result.data !== ""){
 				console.log(result.data);
+				userLogged = result.data;
+				$scope.$emit('getUser', {
+					userLogged: userLogged
+			});
 				window.location.pathname = "/";
 			} else {
 				console.log('Username already exists pls try again')
@@ -79,7 +106,11 @@ app.controller('LogIn', ['$http', '$scope', function($http, $scope) {
 			data: this.form
 		}).then(function(result){
 			console.log(result.data);
-			window.location.pathname = "/";
+			userLogged = result.data;
+			$scope.$emit('getUser', {
+				userLogged: userLogged
+			});
+			//window.location.pathname = "/"; 
 		})
 	}
 }]);
@@ -108,6 +139,24 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 	};
 
 }]);
+
+// app.controller('UserController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
+// 	console.log('this is the user page');
+// 	var userThis = this;
+// 	u = $scope.user._id
+
+// 	this.find = function(u) {
+// 		console.log('user page loading');
+
+// 		$http({
+// 			method: 'GET',
+// 			url: 'users/'+u
+// 		}).then(function(result){
+// 			console.log(result)
+// 		})
+// 	}
+
+// }]);
 	
 app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($http, $scope, $routeParams, $filter) {
 	console.log('this is the show page');
@@ -126,7 +175,6 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($
 		})
 	}
 }]);
-
 
 app.controller('HomeController', function() {
 
