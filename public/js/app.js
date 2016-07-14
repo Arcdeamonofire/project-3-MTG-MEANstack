@@ -33,20 +33,31 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 app.controller('Index', ['$http', '$scope', function($http, $scope) {
 	console.log('this is the index page');
 	var index = this;
+
 	$scope.$on('showCard', function(event, data){
 		// console.log(data);
 		index.cards = data.cards;
 		$scope.cards = index.cards;
 	});
 
-	$scope.$on('getUser', function(event, data){
+	$scope.$on('getUser', function(event, data){ //gets User info to push to front-end
 		index.user = data.userLogged;
-		if(index.user.gender == 'male') {
+		$scope.user = index.user;
+
+		// if (userLogged !== undefined) { //decides nav bar links
+		// 	index.navVar = index.user.userName;
+		// 	index.navLink = '/users/{{index.user._id}}';
+		// } else {
+		// 	index.navVar = 'Sign Up';
+		// 	index.navLink = '/signup';
+		// }
+
+		if(index.user.gender == 'male') { //changes User's avatar based on gender declaration
 			index.userImage = '../img/user-m.jpg';
 		} else {
 			index.userImage = '../img/user-f.jpg';
-		}
-		$scope.user = index.user;
+		};
+
 	});
 
 	$scope.$back = function() { 
