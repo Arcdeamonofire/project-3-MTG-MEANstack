@@ -45,7 +45,7 @@ router.post('/deck', function(req,res){
 	// console.log(req.session.userName);
 	if(req.session.userName !== undefined){
 		User.findOne({userName : req.session.userName}, function(err, foundUser){
-			// console.log(req.body);
+			//console.log(req.body);
 			// console.log(foundUser);
 			foundUser.deck.push(req.body)
 			foundUser.save(function(err){
