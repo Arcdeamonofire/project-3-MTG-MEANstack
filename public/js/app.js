@@ -86,10 +86,7 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 				$scope.$emit('getUser', {
 					userLogged: userLogged
 			});
-				$location.url('/');
-				$location.replace();
-				$window.history.pushState(null, 'any', $location.absUrl());
-				$window.history.go(0);
+				$location.url('/users/'+userLogged._id);
 			} else {
 				console.log('Username already exists pls try again')
 			}
@@ -99,7 +96,7 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 	}
 }]);
 
-app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
+app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($http, $scope, $location, $route) {
 	console.log('this is the log in page');
 
 	$scope.badPassword = false;
@@ -118,11 +115,8 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($ht
 			$scope.$emit('getUser', {
 				userLogged: userLogged
 			});
-			console.log('redirecting to home')
-			$location.url('/');
-			$location.replace();
-			$window.history.pushState(null, 'any', $location.absUrl());
-			$window.history.go(0);
+			console.log('redirecting to home');
+			$location.url('/users/'+userLogged._id);
 		}).then(function(err){
 			$scope.badPassword = true;
 		});
