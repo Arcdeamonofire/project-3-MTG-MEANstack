@@ -59,7 +59,6 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 		if ($scope.user.userName !== undefined) { //nav bar links, w/o final suffix = bad PW return user profile
 			index.navVar = 'WELCOME, ' + index.user.userName;
 			index.navLink = '/users/{{index.user._id}}';
-			console.log('can you do the hockey pokey?')
 			$scope.noUser = false;
 		};
 
