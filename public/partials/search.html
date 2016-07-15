@@ -14,7 +14,7 @@
 		<div>
 			<!-- cards will populate here.  dummy data to visualize -->
 			<a 
-				href="/show/{{card.id}}" 
+				href="/show/{{card.id}}/{{card.colors[0]}}" 
 				ng-repeat="card in search.cards | limitTo:limit"
 			>
 					<img class="thumbnails" src="{{card.imageUrl}}" ng-if="card.imageUrl">
