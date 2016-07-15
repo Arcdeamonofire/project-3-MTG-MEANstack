@@ -129,9 +129,10 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 	}
 }]);
 
-app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
+app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams, Item) {
 	console.log('this is the search page');
 	var search = this;
+	this.searched = false;
 
 	this.find = function(color) {
 		console.log('patience Walker looking into your request');
@@ -146,11 +147,15 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
             	cards:search.cards
         	});
 		})
-	}
+		search.searched=true;
+	};
 
 	if ($routeParams.searchColor !== undefined){
 		search.find($routeParams.searchColor)
 	};
+
+	//Load more
+	$scope.limit = 15;
 
 }]);
 

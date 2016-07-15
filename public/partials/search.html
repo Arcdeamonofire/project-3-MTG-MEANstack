@@ -12,13 +12,15 @@
 		<span class="glyph-black" ng-click="search.find('black')"></span>
 
 		<div>
-		<!-- cards will populate here.  dummy data to visualize -->
-		<a 
-			href="/show/{{card.id}}" 
-			ng-repeat="card in search.cards"
-		>
-				<img class="thumbnails" src="{{card.imageUrl}}" ng-if="card.imageUrl">
-		</a>
+			<!-- cards will populate here.  dummy data to visualize -->
+			<a 
+				href="/show/{{card.id}}" 
+				ng-repeat="card in search.cards | limitTo:limit"
+			>
+					<img class="thumbnails" src="{{card.imageUrl}}" ng-if="card.imageUrl">
+					<!-- load 30 more results? -->
+			</a>
+			<button ng-show="search.searched" id="search-button" ng-click="limit = limit + 15">Load More</button>
 		</div>
 	</div>
 </section>
