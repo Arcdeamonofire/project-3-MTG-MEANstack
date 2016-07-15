@@ -69,6 +69,7 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 
 app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
 	console.log('this is the sign up page');
+	$scope.badPassword = false;
 
 	this.signUp = function() {
 		console.log('Adding a new Planeswalker to the annals of our history');
@@ -91,9 +92,8 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 			} else {
 				// console.log('Username already exists pls try again')
 				console.log('I\'m sorry Planeswalker but that name is already in use, please try again, we wouldn\'t want identity theft would we?')
+				$scope.badPassword = true;
 			}
-		}).then(function(err){
-			$scope.badPassword = true;
 		});
 	}
 }]);
@@ -122,9 +122,8 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 				$location.url('/users/'+userLogged._id);
 			}else {
 				console.log('you typed the wrong password buddy')
+				$scope.badPassword = true;
 			}
-		}).then(function(err){
-			$scope.badPassword = true;
 		});
 	}
 }]);
@@ -159,23 +158,6 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 
 }]);
 
-// app.controller('UserController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
-// 	console.log('this is the user page');
-// 	var userThis = this;
-// 	u = $scope.user._id
-
-// 	this.find = function(u) {
-// 		console.log('user page loading');
-
-// 		$http({
-// 			method: 'GET',
-// 			url: 'users/'+u
-// 		}).then(function(result){
-// 			console.log(result)
-// 		})
-// 	}
-
-// }]);
 	
 app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window', function($http, $scope, $routeParams, $filter, $window) {
 	console.log('this is the show page');
