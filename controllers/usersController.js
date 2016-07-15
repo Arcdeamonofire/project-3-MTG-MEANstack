@@ -5,6 +5,14 @@ var express = require('express'),
 //user model
 var User = require('../models/users');
 
+//get route for user deck
+router.get('/deck/:user', function(req, res){
+	console.log(req.params.user);
+	User.findById(req.params.user, function(err, user) {
+    	res.send(user.deck)
+  	})
+})
+
 //login route
 router.post('/login', function(req, res){
 	User.findOne({userName:req.body.userName}, function(err, foundUser){
@@ -25,15 +33,15 @@ router.post('/', function(req, res){
 	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
 	// console.log(req.body);
 	// console.log(req.session);
-	console.log('trying to create user')
+	console.log('Trying to update our records Planeswalker')
 	User.create(req.body, function(err, user) {
 		console.log('this is the user being added: '+user);
 		if(user !== undefined){
-			console.log('successful addition')
+			console.log('You\'re name has successfully been added to the annals Planeswalker')
 			req.session.userName = user.userName;
 			res.send(user);
 		} else{
-			console.log("I\'m broken!")
+			console.log("I\'m afraid a mishap has occured Planeswalker!")
 			res.send(user);
 		}
 		// console.log(req.session.userName);
@@ -49,7 +57,7 @@ router.post('/deck', function(req,res){
 			// console.log(foundUser);
 			foundUser.deck.push(req.body)
 			foundUser.save(function(err){
-				console.log('for the win!');
+				console.log('I have added the requested spell to your spell book Planeswalker');
 			});
 		})
 	}
