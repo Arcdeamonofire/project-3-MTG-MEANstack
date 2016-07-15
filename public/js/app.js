@@ -177,9 +177,9 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 			console.log(result.data);
 		})
 	}
-	this.goBack = function(){
-		$window.history.go(-1);
-	}
+	// this.goBack = function(){
+	// 	$window.history.go(-1);
+	// }
 }]);
 
 app.controller('HomeController', function() {
