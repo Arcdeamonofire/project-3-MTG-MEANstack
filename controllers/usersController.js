@@ -15,7 +15,7 @@ router.post('/login', function(req, res){
 			res.send(foundUser);
 		} else {
 			console.log('failed: bad password')
-			res.redirect('/');
+			res.send('failed');
 		}
 	});
 });

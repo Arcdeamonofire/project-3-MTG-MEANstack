@@ -111,12 +111,16 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 			data: this.form
 		}).then(function(result){
 			// console.log(result.data);
-			userLogged = result.data;
-			$scope.$emit('getUser', {
-				userLogged: userLogged
-			});
-			console.log('redirecting to home');
-			$location.url('/users/'+userLogged._id);
+			if (result.data !== 'failed'){
+				userLogged = result.data;
+				$scope.$emit('getUser', {
+					userLogged: userLogged
+				});
+				console.log('redirecting to home');
+				$location.url('/users/'+userLogged._id);
+			}else {
+				console.log('you typed the wrong password buddy')
+			}
 		}).then(function(err){
 			$scope.badPassword = true;
 		});
