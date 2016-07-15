@@ -400,20 +400,41 @@ body {
 	margin-top: 30px;
 }
 
-/*input[type="checkbox"].search-checkbox {
-	width: 2em;
+#search-button {
+	display: block;
 	font-size: 1em;
-	opacity: 0;
+	color: #fff;
+	background-color: #EC9945;
+	padding: .9em 0;
+	margin: 2em auto;
+	text-align: center;
+	width: 136px;
+	border: none;
+	-webkit-animation: fadein 3s;
+	-moz-animation: fadein 3s;
+	-ms-animation: fadein 3s;
+	animation: fadein 3s;
 }
 
-	input[type="checkbox"].search-checkbox + label > span.glyph-white {
-		display: inline-block;
-		width: 60px;
-		height: 60px;
-		background-image: url(../img/color-sheet.png);
-		background-position: 64px -7.4px;
-		margin: 1em 2em;
-	}*/
+@keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@-ms-keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
 
 	/*Glyphicons*/
 	.glyph-red {
