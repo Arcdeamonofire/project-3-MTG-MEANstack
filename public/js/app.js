@@ -21,7 +21,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		templateUrl: 'partials/login.html',
 		controller: 'LogIn',
 		controllerAs: 'login'
-	}).when('/show/:cardid', {
+	}).when('/show/:cardid/:color', {
 		templateUrl: 'partials/show.html',
 		controller: 'Show',
 		controllerAs: 'show'
@@ -47,6 +47,11 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 		$scope.cards = index.cards;
 	});
 
+	$scope.$on('reportColor', function(event, data){
+		// console.log(data.searchColor);
+		$scope.searchColor = data.searchColor;
+	});
+
 	$scope.$on('getUser', function(event, data){ //gets User info to push to front-end
 		index.user = data.userLogged;
 		$scope.user = index.user;
@@ -62,7 +67,6 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 		} else {
 			index.userImage = '../img/user-f.jpg';
 		};
-
 	});
 
 }]);
@@ -135,6 +139,11 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 
 	this.find = function(color) {
 		console.log('patience Walker looking into your request');
+		$scope.searchColor = color;
+		$scope.$emit('reportColor', {
+            	searchColor: color
+        });
+		console.log($scope.searchColor);
 
 		$http({
 			method: 'GET',
@@ -165,13 +174,33 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 }]);
 
 	
-app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window', function($http, $scope, $routeParams, $filter, $window) {
+app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$location', function($http, $scope, $routeParams, $filter, $location) {
 	console.log('this is the show page');
-	// console.log('this id is: ' + $routeParams.cardid);
 	var show = this;
+	show.fromDeck = false;
+	// show.noUser = $scope.noUser;
+	show.noUser = true
+	$routeParams.color = $routeParams.color.toLowerCase()
+	// console.log($routeParams.color);
+
+	//debugging console.logs to figure out why my new if conditions weren't working
+	//turns out it was because I was calling $routeParams instead of $routeParams.color
+	// console.log('checking if statement conditions:')
+	// console.log('=======================')
+	// console.log('$scope.$parent.cards: ')
 	// console.log($scope.$parent.cards)
-	//checks to see if user is coming from
-	if ($scope.$parent.cards === undefined){
+	// console.log('=======================')
+	// console.log('$routeParams: ')
+	// console.log($routeParams)
+	// console.log('=======================')
+	// console.log('$scope.searchColor: ')
+	// console.log($scope.searchColor)
+	// console.log($routeParams.color !== $scope.searchColor)
+
+	//checks to see where user is coming from
+	//also checks to see where it should be getting the data from the if is for data that should be
+	//gotten from db else is for data from json from api request
+	if (($scope.$parent.cards === undefined) || ($routeParams.color !== $scope.searchColor)){
 		console.log('undefined going another direction');
 		// console.log($scope.user._id);
 		var userId = $scope.user._id;
@@ -181,8 +210,14 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 		}).then(function(result){
 			// console.log(result.data)
 			show.card = $filter('filter')(result.data, function (card) {return card.id === $routeParams.cardid;})[0];
+			// console.log(show.user);
+			show.noUser = false;
+			show.fromDeck =true;
+			// console.log(show.fromDeck);
 		})
-	} else{
+	} else {
+
+		console.log('showing card from json')
 		show.card = $filter('filter')($scope.$parent.cards, function (card) {return card.id === $routeParams.cardid;})[0];
 	}
 
@@ -195,6 +230,9 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 		}).then(function(result){
 			console.log('added card');
 			console.log(result.data);
+			console.log($scope.user)
+			$scope.user.deck = result.data;
+			$location.url('/users/'+$scope.user._id);
 		})
 	}
 }]);

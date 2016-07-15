@@ -17,7 +17,7 @@
 		<!-- cards will populate here.  dummy data to visualize -->
 		<div>
 			<a 
-				href="/show/{{card.id}}" 
+				href="/show/{{card.id}}/{{card.colors[0]}}" 
 				ng-repeat="card in index.user.deck"
 			>
 					<img class="thumbnails" src="{{card.imageUrl}}" ng-if="card.imageUrl">
