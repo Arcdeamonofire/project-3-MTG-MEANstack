@@ -14,5 +14,13 @@
 		</form><br>
 		<h2 class="signup-subheading"><span>Already registered?</span></h2>
 		<a class="link" href="/login"><div id="signup-button-login">LOG IN</div></a>
+
+		<!-- Bad Username message -->
+		<div class="block-center orange" ng-show="badPassword">
+			<br>
+			<p class="center">USERNAME ALREADY TAKEN.</p>
+			<p class="center">May I suggest you try <span class="white">{{index.randomName()}}</span>?</p>
+		</div>
+
 	</div>
 </section>

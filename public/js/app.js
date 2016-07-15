@@ -34,6 +34,11 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 	console.log('this is the index page');
 	var index = this;
 
+	this.randomNames = ['myLittleBrony', 'BubbleButt1986', 'KakaoFriends119', 'Cicada3301', 'JetFuelSteelBeams'];
+	this.randomName = function() {
+		return index.randomNames[Math.floor(Math.random()*5)];
+	}
+
 	$scope.noUser = true;
 
 	$scope.$on('showCard', function(event, data){
@@ -46,8 +51,8 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 		index.user = data.userLogged;
 		$scope.user = index.user;
 	
-		if ($scope.user !== undefined) { //decides nav bar links
-			index.navVar = 'Welcome, ' + index.user.userName;
+		if ($scope.user.userName !== undefined) { //nav bar links, w/o final suffix = bad PW return user profile
+			index.navVar = 'WELCOME, ' + index.user.userName;
 			index.navLink = '/users/{{index.user._id}}';
 			$scope.noUser = false;
 		};
@@ -87,12 +92,16 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 			} else {
 				console.log('Username already exists pls try again')
 			}
-		})
+		}).then(function(err){
+			$scope.badPassword = true;
+		});
 	}
 }]);
 
 app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
 	console.log('this is the log in page');
+
+	$scope.badPassword = false;
 
 	this.logIn = function() {
 		console.log('a Planeswalker is logging in!');
@@ -112,7 +121,9 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($ht
 			$location.url('/');
 			$location.replace();
 			$window.history.pushState(null, 'any', $location.absUrl());
-		})
+		}).then(function(err){
+			$scope.badPassword = true;
+		});
 	}
 }]);
 
