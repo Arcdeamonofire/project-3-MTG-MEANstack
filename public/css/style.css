@@ -62,13 +62,13 @@ body {
 	color: #fff;
 }
 
-.orange {
-	color: #EC9945;
-}
-
 .link {
 	text-decoration: none;
 	color: #fff;
+}
+
+.orange {
+	color: #EC9945;
 }
 
 .thumbnails {
