@@ -89,6 +89,7 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 				$location.url('/');
 				$location.replace();
 				$window.history.pushState(null, 'any', $location.absUrl());
+				$window.history.go(0);
 			} else {
 				console.log('Username already exists pls try again')
 			}
@@ -121,6 +122,7 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($ht
 			$location.url('/');
 			$location.replace();
 			$window.history.pushState(null, 'any', $location.absUrl());
+			$window.history.go(0);
 		}).then(function(err){
 			$scope.badPassword = true;
 		});
@@ -170,7 +172,7 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 
 // }]);
 	
-app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($http, $scope, $routeParams, $filter) {
+app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window', function($http, $scope, $routeParams, $filter, $window) {
 	console.log('this is the show page');
 	// console.log('this id is: ' + $routeParams.cardid);
 	var show = this;
@@ -186,6 +188,9 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($
 			console.log(result.data);
 		})
 	}
+	// this.goBack = function(){
+	// 	$window.history.go(-1);
+	// }
 }]);
 
 app.controller('HomeController', function() {
