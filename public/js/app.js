@@ -181,6 +181,8 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 	console.log('this is the show page');
 	// console.log('this id is: ' + $routeParams.cardid);
 	var show = this;
+	show.fromDeck = false;
+	console.log(show.fromDeck);
 	// console.log($scope.$parent.cards)
 	//checks to see if user is coming from
 	if ($scope.$parent.cards === undefined){
@@ -193,6 +195,8 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 		}).then(function(result){
 			// console.log(result.data)
 			show.card = $filter('filter')(result.data, function (card) {return card.id === $routeParams.cardid;})[0];
+			show.fromDeck =true;
+			console.log(show.fromDeck);
 		})
 	} else{
 		show.card = $filter('filter')($scope.$parent.cards, function (card) {return card.id === $routeParams.cardid;})[0];
