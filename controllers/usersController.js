@@ -59,6 +59,7 @@ router.post('/deck', function(req,res){
 			foundUser.save(function(err){
 				console.log('I have added the requested spell to your spell book Planeswalker');
 			});
+			res.send(foundUser.deck);
 		})
 	}
 })

@@ -187,7 +187,7 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 
 // }]);
 	
-app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window', function($http, $scope, $routeParams, $filter, $window) {
+app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$location', function($http, $scope, $routeParams, $filter, $location) {
 	console.log('this is the show page');
 	var show = this;
 	show.fromDeck = false;
@@ -243,6 +243,9 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 		}).then(function(result){
 			console.log('added card');
 			console.log(result.data);
+			console.log($scope.user)
+			$scope.user.deck = result.data;
+			$location.url('/users/'+$scope.user._id);
 		})
 	}
 }]);
