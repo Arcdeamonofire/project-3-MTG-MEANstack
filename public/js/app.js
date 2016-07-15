@@ -175,7 +175,7 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', function($
 	// console.log('this id is: ' + $routeParams.cardid);
 	var show = this;
 	show.card = $filter('filter')($scope.$parent.cards, function (d) {return d.id === $routeParams.cardid;})[0];
-	// console.log(this.card);
+	console.log(this.card);
 	this.addCard = function(){
 		$http({
 			method:'POST',
