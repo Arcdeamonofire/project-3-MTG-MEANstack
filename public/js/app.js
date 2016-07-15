@@ -34,6 +34,13 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 	console.log('this is the index page');
 	var index = this;
 
+	this.randomNames = ['myLittleBrony', 'BubbleButt1986', 'KakaoFriends119', 'Cicada3301', 'JetFuelSteelBeams'];
+	this.randomName = function() {
+		return index.randomNames[Math.floor(Math.random()*5)];
+	}
+
+	$scope.noUser = true;
+
 	$scope.$on('showCard', function(event, data){
 		// console.log(data);
 		index.cards = data.cards;
@@ -43,14 +50,12 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 	$scope.$on('getUser', function(event, data){ //gets User info to push to front-end
 		index.user = data.userLogged;
 		$scope.user = index.user;
-
-		// if (userLogged !== undefined) { //decides nav bar links
-		// 	index.navVar = index.user.userName;
-		// 	index.navLink = '/users/{{index.user._id}}';
-		// } else {
-		// 	index.navVar = 'Sign Up';
-		// 	index.navLink = '/signup';
-		// }
+	
+		if ($scope.user.userName !== undefined) { //nav bar links, w/o final suffix = bad PW return user profile
+			index.navVar = 'WELCOME, ' + index.user.userName;
+			index.navLink = '/users/{{index.user._id}}';
+			$scope.noUser = false;
+		};
 
 		if(index.user.gender == 'male') { //changes User's avatar based on gender declaration
 			index.userImage = '../img/user-m.jpg';
@@ -88,12 +93,16 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 			} else {
 				console.log('Username already exists pls try again')
 			}
-		})
+		}).then(function(err){
+			$scope.badPassword = true;
+		});
 	}
 }]);
 
 app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
 	console.log('this is the log in page');
+
+	$scope.badPassword = false;
 
 	this.logIn = function() {
 		console.log('a Planeswalker is logging in!');
@@ -114,7 +123,9 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$window', function($ht
 			$location.replace();
 			$window.history.pushState(null, 'any', $location.absUrl());
 			$window.history.go(0);
-		})
+		}).then(function(err){
+			$scope.badPassword = true;
+		});
 	}
 }]);
 
@@ -166,7 +177,7 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 	// console.log('this id is: ' + $routeParams.cardid);
 	var show = this;
 	show.card = $filter('filter')($scope.$parent.cards, function (d) {return d.id === $routeParams.cardid;})[0];
-	// console.log(this.card);
+	console.log(this.card);
 	this.addCard = function(){
 		$http({
 			method:'POST',

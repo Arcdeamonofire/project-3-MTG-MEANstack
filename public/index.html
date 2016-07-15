@@ -17,10 +17,10 @@
 			<nav id="home-nav">
 				<a href="/"><img id="home-nav-logo" src="img/m-logo.png"></a>
 				<ul class="home-ul">
-					<li class="home-li"><a class="link" href="{{index.navLink}}">{{index.navVar}}</a></li>
-					<li class="home-li"><a class="link" href="/signup">sign up</a></li>
-					<li class="home-li"><a class="link" href="/users/{{index.user._id}}">users(temp)</a></li>
-					<li class="home-li"><a class="link" href="/search">search</a></li>
+					<li class="home-li"><a class="orange link" href="{{index.navLink}}">{{index.navVar}}</a></li>
+					<li ng-show="noUser"class="home-li"><a class="link" href="/signup">SIGN UP</a></li>
+					<li ng-show="noUser" class="home-li"><a class="link" href="/login">LOG IN</a></li>
+					<li class="home-li"><a class="link" href="/search">SEARCH</a></li>
 				</ul>
 			</nav>
 
