@@ -71,8 +71,8 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 	console.log('this is the sign up page');
 
 	this.signUp = function() {
-		console.log('signing up a new Planeswalker');
-		console.log('Planeswalker\'s data: ', this.form);
+		console.log('Adding a new Planeswalker to the annals of our history');
+		// console.log('Planeswalker\'s data: ', this.form);
 
 		$http({
 			method: 'POST',
@@ -86,9 +86,11 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 				$scope.$emit('getUser', {
 					userLogged: userLogged
 			});
+				console.log('Welcome Planeswalker')
 				$location.url('/users/'+userLogged._id);
 			} else {
-				console.log('Username already exists pls try again')
+				// console.log('Username already exists pls try again')
+				console.log('I\'m sorry Planeswalker but that name is already in use, please try again, we wouldn\'t want identity theft would we?')
 			}
 		}).then(function(err){
 			$scope.badPassword = true;
@@ -103,7 +105,7 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 
 	this.logIn = function() {
 		console.log('a Planeswalker is logging in!');
-		console.log('Planeswalker\'s data: ', this.form);
+		// console.log('Planeswalker\'s data: ', this.form);
 
 		$http({
 			method: 'POST',
@@ -116,7 +118,7 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 				$scope.$emit('getUser', {
 					userLogged: userLogged
 				});
-				console.log('redirecting to home');
+				console.log('redirecting to your user page');
 				$location.url('/users/'+userLogged._id);
 			}else {
 				console.log('you typed the wrong password buddy')
@@ -174,8 +176,24 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 	console.log('this is the show page');
 	// console.log('this id is: ' + $routeParams.cardid);
 	var show = this;
-	show.card = $filter('filter')($scope.$parent.cards, function (d) {return d.id === $routeParams.cardid;})[0];
-	console.log(this.card);
+	// console.log($scope.$parent.cards)
+	//checks to see if user is coming from
+	if ($scope.$parent.cards === undefined){
+		console.log('undefined going another direction');
+		// console.log($scope.user._id);
+		var userId = $scope.user._id;
+		$http({
+			method:'GET',
+			url:'/users/deck/'+userId
+		}).then(function(result){
+			// console.log(result.data)
+			show.card = $filter('filter')(result.data, function (card) {return card.id === $routeParams.cardid;})[0];
+		})
+	} else{
+		show.card = $filter('filter')($scope.$parent.cards, function (card) {return card.id === $routeParams.cardid;})[0];
+	}
+
+	//function to add a card from the search to your deck
 	this.addCard = function(){
 		$http({
 			method:'POST',
@@ -186,9 +204,6 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$window',
 			console.log(result.data);
 		})
 	}
-	// this.goBack = function(){
-	// 	$window.history.go(-1);
-	// }
 }]);
 
 app.controller('HomeController', function() {
