@@ -86,7 +86,7 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 				$scope.$emit('getUser', {
 					userLogged: userLogged
 			});
-				$location.url('/');
+				$location.url('/users/'+userLogged._id);
 			} else {
 				console.log('Username already exists pls try again')
 			}
@@ -116,7 +116,7 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 				userLogged: userLogged
 			});
 			console.log('redirecting to home');
-			$location.url('/');
+			$location.url('/users/'+userLogged._id);
 		}).then(function(err){
 			$scope.badPassword = true;
 		});
