@@ -153,6 +153,12 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 		search.find($routeParams.searchColor)
 	};
 
+	//Toggles search glyph's static CSS change
+	$('.glyphicon-class').click(function() {
+		$('.glyphicon-class').not(this).removeClass('glyphicon-active');
+		$(this).toggleClass('glyphicon-active');
+	});
+
 	//Load more
 	$scope.limit = 15;
 
