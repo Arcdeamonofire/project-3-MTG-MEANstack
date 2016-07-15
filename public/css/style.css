@@ -80,6 +80,11 @@ body {
 	margin: 20px 20px;
 }
 
+.font-large {
+	font-size: 2em;
+	font-weight: 300;
+}
+
 /*INDEX.html*/
 
 .home-img {
@@ -318,6 +323,7 @@ body {
 	padding: 1em 2em;
 	margin: 1em auto;
 	border: none;
+	cursor: pointer;
 }
 
 #signup-button-signup:hover {
@@ -339,6 +345,7 @@ body {
 	margin: 0 auto;
 	text-align: center;
 	width: 136px;
+	cursor: pointer;
 }
 
 #signup-button-login:hover {
@@ -372,6 +379,7 @@ body {
 	padding: 1em 2em;
 	margin: 1em auto;
 	border: none;
+	cursor: pointer;
 }
 
 #login-button-signup:hover {
@@ -437,52 +445,68 @@ body {
 }
 
 	/*Glyphicons*/
-	.glyph-red {
+	#glyph-red {
 		display: inline-block;
 		width: 60px;
-		height: 60px;
+		height: 65px;
 		background-image: url(../img/color-sheet.png);
 		background-position: -7px -85px;
 		margin: 1em 2em;
 	}
 
-	.glyph-green {
+	#glyph-green {
 		display: inline-block;
 		width: 60px;
-		height: 60px;
+		height: 65px;
 		background-image: url(../img/color-sheet.png);
 		background-position: -7px -7.4px;
 		margin: 1em 2em;
 	}
 
-	.glyph-blue {
+	#glyph-blue {
 		display: inline-block;
 		width: 60px;
-		height: 60px;
+		height: 65px;
 		background-image: url(../img/color-sheet.png);
 		background-position: 65px -85px;
 		margin: 1em 2em;
 	}
 
-	.glyph-white {
+	#glyph-white {
 		display: inline-block;
 		width: 60px;
-		height: 60px;
+		height: 65px;
 		background-image: url(../img/color-sheet.png);
 		background-position: 64px -7.4px;
 		margin: 1em 2em;
 	}
 
-	.glyph-black {
+	#glyph-black {
 		display: inline-block;
 		width: 60px;
-		height: 60px;
+		height: 65px;
 		background-image: url(../img/color-sheet.png);
 		background-position: -8px 66px;
 		margin: 1em 2em;
 	}
 
-	.glyph-white:active {
+	.glyphicon-class {
+		cursor: pointer;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.glyphicon-class:hover {
+		opacity: .4;
+		border-bottom: 2.5px solid #EC9945
+	} 
+
+	.glyphicon-active {
+		border-bottom: 2.5px solid #EC9945
+	}
+
+/*	.glyph-white:active {
 		opacity: .3;
 	}
 
@@ -500,7 +524,7 @@ body {
 
 	.glyph-black:active {
 		opacity: .3;
-	}
+	}*/
 
 /*SHOW.html*/
 #show-section {
@@ -530,6 +554,7 @@ body {
 	background-color: #EC9945;
 	padding: 1em 3em;
 	margin: 1em 0;
+	cursor: pointer;
 }
 
 #show-addbutton:hover {
