@@ -16,7 +16,7 @@ router.get('/deck/:user', function(req, res){
 //login route
 router.post('/login', function(req, res){
 	User.findOne({userName:req.body.userName}, function(err, foundUser){
-		if(bcrypt.compareSync(req.body.password, foundUser.password)){
+		if(foundUser && bcrypt.compareSync(req.body.password, foundUser.password)){
 			req.session.userName = foundUser.userName;
 			// console.log(req.session);
 			console.log('successful sign in')
