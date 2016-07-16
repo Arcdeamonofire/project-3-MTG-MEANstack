@@ -40,6 +40,7 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 	}
 
 	$scope.noUser = true;
+	$scope.deckEmpty = false;
 
 	$scope.$on('showCard', function(event, data){
 		// console.log(data);
@@ -64,9 +65,18 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 
 		if(index.user.gender == 'male') { //changes User's avatar based on gender declaration
 			index.userImage = '../img/user-m.jpg';
-		} else {
+		} else if(index.user.gender == 'female') {
 			index.userImage = '../img/user-f.jpg';
+		} else {
+			index.userImage = '../img/user-p.jpg';
 		};
+
+		//Deck is empty message
+		//BUGGGGGGGGG needs digest cycle to run
+		if(index.user.deck.length >= 1) {
+			$scope.deckEmpty = true;
+		};
+
 	});
 
 }]);
@@ -132,7 +142,7 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 	}
 }]);
 
-app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams, Item) {
+app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
 	console.log('this is the search page');
 	var search = this;
 	this.searched = false;
