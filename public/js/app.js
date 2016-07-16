@@ -178,8 +178,8 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$location
 	console.log('this is the show page');
 	var show = this;
 	show.fromDeck = false;
-	// show.noUser = $scope.noUser;
-	show.noUser = true
+	show.noUser = $scope.noUser;
+	console.log($scope.noUser);
 	$routeParams.color = $routeParams.color.toLowerCase()
 	// console.log($routeParams.color);
 
@@ -210,13 +210,13 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$location
 		}).then(function(result){
 			// console.log(result.data)
 			show.card = $filter('filter')(result.data, function (card) {return card.id === $routeParams.cardid;})[0];
-			// console.log(show.user);
-			show.noUser = false;
-			show.fromDeck =true;
-			// console.log(show.fromDeck);
+			console.log(show.noUser);
+			show.fromDeck = true;
+			console.log(show.fromDeck);
 		})
 	} else {
-
+		console.log(show.noUser);
+		console.log(show.fromDeck);
 		console.log('showing card from json')
 		show.card = $filter('filter')($scope.$parent.cards, function (card) {return card.id === $routeParams.cardid;})[0];
 	}
