@@ -11,11 +11,13 @@
 			<h1 class="inline-block" id="users-heading">Welcome, <span class="orange uppercase">{{user.firstName}}!</span></h1>
 		</div>
 
-
-		<h2 id="users-deck-subheading"><u>My Deck</u></h2>
+		<br>
+		<h2 id="users-deck-subheading"><span class="orange">{{user.firstName}}'s</span> Deck</h2>
+		<br>
+		<div id="users-deck-div-hidden" ng-hide="deckEmpty">Empty</div>
 
 		<!-- cards will populate here.  dummy data to visualize -->
-		<div>
+		<div class="users-deck-div">
 			<a 
 				href="/show/{{card.id}}/{{card.colors[0]}}" 
 				ng-repeat="card in index.user.deck"
