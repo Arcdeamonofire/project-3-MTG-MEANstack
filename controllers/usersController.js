@@ -1,11 +1,12 @@
+//Requires
 var express = require('express'),
     router = express.Router(),
     bcrypt = require('bcrypt');
 
-//user model
+//User model
 var User = require('../models/users');
 
-//get route for user deck
+//GET route for user deck
 router.get('/deck/:user', function(req, res){
 	console.log(req.params.user);
 	User.findById(req.params.user, function(err, user) {
@@ -13,7 +14,7 @@ router.get('/deck/:user', function(req, res){
   	})
 })
 
-//login route
+//Log In route
 router.post('/login', function(req, res){
 	User.findOne({userName:req.body.userName}, function(err, foundUser){
 		if(foundUser && bcrypt.compareSync(req.body.password, foundUser.password)){
@@ -28,7 +29,7 @@ router.post('/login', function(req, res){
 	});
 });
 
-//sign up route -> a push User.create
+//Sign Up route -> a push User.create
 router.post('/', function(req, res){
 	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
 	// console.log(req.body);
@@ -63,5 +64,13 @@ router.post('/deck', function(req,res){
 		})
 	}
 })
+
+//Log Out route and session is destroyed
+router.post('/logout', function(req, res) {
+	req.session.destroy(function(err) {
+		console.log('user session destroyed and logged out')
+		res.redirect('/')
+	})
+});
 
 module.exports = router;
