@@ -2,25 +2,26 @@
 A MEAN stack app about magic the gathering TEAM: Colt w/ jamesgoatcher
 
 # Languages used:
-HTML, CSS, Javascript, angular.js
+HTML, CSS, Javascript, angular.js, express, mongoose/mongoDB
 
 # Synopsis
 A deck building and card searching app for Magic: The Gathering using http://magicthegathering.io/
 
 # Trello
 Daily Tracker: https://trello.com/b/ssU9hOTS
+Project Flow Board: https://trello.com/b/IoQvFBzA/project-flow
 
 # MVP
-- [ ] Site/App with page views: 
+- [x] Site/App with page views: 
 	- index
 	- search
 	- card show page
 	- user home
 	- user deck
 
-- [ ] User Login/logout
+- [x] User Login/logout
 
-- [ ] card search
+- [x] card search
 
 # User Stories
 - User will see home screen when they load the app
@@ -50,15 +51,19 @@ Daily Tracker: https://trello.com/b/ssU9hOTS
 ![wireframe - deck](wireframes/wireframe_deck.png)
 
 # Technologies Used (API Reference?)
-node.js, express, html, css, mongodb, mongo, and mongoose, angular.js, http://magicthegathering.io/
+node.js, express, html, css, mongoDB, and mongoose, angular.js, http://magicthegathering.io/
 
 # Approach
+We created a MEAN stack app that connects the front end functionality of angular.js with the backend power of mongoDB and mongoose and express. A single page app with the power of angular and backed it up with a database in express and mongoDB. 
+
+It creates users in the DB and can put them in or pull their info for signup or login. It searches an api (magic the gathering DB) for cards of certain color and then loads the results, saving a json for immediate retrieval of those colored cards (a new search replaces the json). If a user is logged in then  they can save a card to their deck and then the card can be called up from their deck which is stored in the DB.
 
 # Live Site Link
 
-Soon......
+https://magicdeckbuilder.herokuapp.com/
 
 #Installation Instructions
 None at the moment
 
 # Unsolved Problems
+- Our message about an empty deck still appears even after a card is added.
