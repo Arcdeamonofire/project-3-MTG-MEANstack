@@ -27,33 +27,44 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		controllerAs: 'show'
 	}).when('/users/:id', {
 		templateUrl: 'partials/users.html'
+	}).when('/logout', {
+		templateUrl: 'partials/logout.html',
+		controller: 'LogOut',
+		controllerAs: 'logout'
 	});
 }]);
 
+//PARENT CONTROLLER
 app.controller('Index', ['$http', '$scope', function($http, $scope) {
 	console.log('this is the index page');
 	var index = this;
 
+	//Silly JS message if User attempts sign up with already registered name
 	this.randomNames = ['myLittleBrony', 'BubbleButt1986', 'KakaoFriends119', 'Cicada3301', 'JetFuelSteelBeams'];
 	this.randomName = function() {
 		return index.randomNames[Math.floor(Math.random()*5)];
 	}
 
+	//Controls nav bar and front-end user view: True = no user, False = user
 	$scope.noUser = true;
+	//Controls empty deck message.  False = no cards, True = cards
 	$scope.deckEmpty = false;
 
+	//Transmits cards to parent
 	$scope.$on('showCard', function(event, data){
 		// console.log(data);
 		index.cards = data.cards;
 		$scope.cards = index.cards;
 	});
 
+	//Transmits color to parent
 	$scope.$on('reportColor', function(event, data){
 		// console.log(data.searchColor);
 		$scope.searchColor = data.searchColor;
 	});
 
-	$scope.$on('getUser', function(event, data){ //gets User info to push to front-end
+	//Transmits logged in user info to parent
+	$scope.$on('getUser', function(event, data){ 
 		index.user = data.userLogged;
 		$scope.user = index.user;
 	
@@ -81,6 +92,7 @@ app.controller('Index', ['$http', '$scope', function($http, $scope) {
 
 }]);
 
+//Sign Up
 app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($http, $scope, $location, $window) {
 	console.log('this is the sign up page');
 	$scope.badPassword = false;
@@ -112,6 +124,7 @@ app.controller('SignUp', ['$http', '$scope', '$location', '$window', function($h
 	}
 }]);
 
+//Log In
 app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($http, $scope, $location, $route) {
 	console.log('this is the log in page');
 
@@ -142,11 +155,40 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 	}
 }]);
 
+//Log Out
+app.controller('LogOut', ['$http', '$scope', '$location', '$route', function($http, $scope, $location, $route) {
+	console.log('this is the log out page');
+
+	this.logOut = function() {
+		console.log('a Planeswalker is logging in!');
+		// console.log('Planeswalker\'s data: ', this.form);
+
+		$http({
+			method: 'POST',
+			url: '/users/logout',
+			data: this.form
+		}).then(function(result){
+			console.log(result);
+			userLogged = null;
+			$scope.$emit('getUser', {
+				userLogged: userLogged
+			});
+			$scope.$parent.noUser = true;
+			console.log('redirecting to home');
+			// $location.url('/');
+			location.reload();
+		});
+	}
+	
+}]);
+
+//Search for cards
 app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
 	console.log('this is the search page');
 	var search = this;
 	this.searched = false;
 
+	//find card by color function
 	this.find = function(color) {
 		console.log('patience Walker looking into your request');
 		$scope.searchColor = color;
@@ -183,7 +225,7 @@ app.controller('Search', ['$http', '$scope', '$routeParams', function($http, $sc
 
 }]);
 
-	
+//Show page for card
 app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$location', function($http, $scope, $routeParams, $filter, $location) {
 	console.log('this is the show page');
 	var show = this;
@@ -247,6 +289,7 @@ app.controller('Show', ['$http', '$scope', '$routeParams', '$filter', '$location
 	}
 }]);
 
+//Sub-controller for ABOUT section's ng-includes
 app.controller('HomeController', function() {
 
 	this.include_what = 'partials/what.html';

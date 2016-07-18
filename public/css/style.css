@@ -120,6 +120,22 @@ body {
 		padding: 0 2em;
 	}
 
+	.home-link {
+		color: #fff;
+	}
+
+	.home-link:hover {
+		color: #EC9945;
+	}
+
+	#home-home-link {
+		color: #EC9945;
+	}
+
+	#home-home-link:hover {
+		color: #17D731;
+	}
+
 	.home-a:hover {
 		color: #EC9945;
 	}
@@ -638,6 +654,18 @@ body {
 	font-weight: 300;
 	background: rgba(255,255,255,.1);
 	display: inline-block;
+}
+
+/*LOGOUT.html*/
+
+#logout-section {
+	padding: 1em;
+	margin: 70px auto 10px;
+}
+
+#logout-heading {
+	text-align: center;
+	font-size: 4em;
 }
 
 /*MEDIA QUERIES*/

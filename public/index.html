@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="js/app.js"></script>
 	<base href="/">
 	
-	<title>Magic: the Gathering Database and Deck Builder</title>
+	<title>M:TGDB</title>
 </head>
 
 	<body ng-controller="Index as index">
@@ -18,10 +18,11 @@
 			<nav id="home-nav">
 				<a href="/"><img id="home-nav-logo" src="img/m-logo.png"></a>
 				<ul class="home-ul">
-					<li class="home-li"><a class="orange link" href="{{index.navLink}}">{{index.navVar}}</a></li>
-					<li ng-show="noUser"class="home-li"><a class="link" href="/signup">SIGN UP</a></li>
-					<li ng-show="noUser" class="home-li"><a class="link" href="/login">LOG IN</a></li>
-					<li class="home-li"><a class="link" href="/search">SEARCH</a></li>
+					<li class="home-li"><a class="orange link" id="home-home-link" href="{{index.navLink}}">{{index.navVar}}</a></li>
+					<li ng-show="noUser"class="home-li"><a class="link home-link" href="/signup">SIGN UP</a></li>
+					<li ng-show="noUser" class="home-li"><a class="link home-link" href="/login">LOG IN</a></li>
+					<li class="home-li"><a class="link home-link" href="/search">SEARCH</a></li>
+					<li ng-hide="noUser" class="home-li"><a class="link home-link" href="/logout">LOG OUT</a></li>
 				</ul>
 			</nav>
 

@@ -1,5 +1,7 @@
+//API key hidden (we don't have one but it's nice to have documentation)
 require('dotenv').config();
 
+//Server variables
 var express = require('express'),
     app     = express(),
     mongoose = require('mongoose'),
@@ -7,6 +9,7 @@ var express = require('express'),
     session = require('express-session'),
     bodyParser = require('body-parser');
 
+//Sessions for user cookies
 app.use(session({
     secret: "Planeswalker",
     resave: false,
@@ -28,6 +31,7 @@ app.use(express.static('public'));
 var usersController = require('./controllers/usersController');
 app.use('/users', usersController);
 
+//Catch all redirect
 app.get('*', function(req, res){
   res.redirect('/');
 });
@@ -36,7 +40,7 @@ mongoose.connection.once('open', function(){
     console.log('greetings Planeswalker I await your command');
 })
 
-
+//Port
 app.listen(port, function(){
     console.log('hush a Planeswalker is among us');
     console.log(process.env.HELLO)
